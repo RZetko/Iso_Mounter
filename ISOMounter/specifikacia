@@ -1,0 +1,35 @@
+- Doprogramovat flagy 0x80
+- Dorobit ikonky a vizual
+- Doprogramovat interleaving
+- Skok z mountactivity spat do mainactivity
+- dual panel
+- Zrusit modry glow DONE
+- ikony DONE
+- pridat velkost suboru DONE
+- naskalovat rozumne texty
+
+
+if (polozka.isDir() && (  meno.equals(".") || meno.equals("..")))
+                    ikona.setImageDrawable(draw0);
+                else if (polozka.isDir())
+                    ikona.setImageDrawable(draw1);
+                else if (polozka.isFile()) {
+                    MimeTypeMap myMime = MimeTypeMap.getSingleton();
+                    String mimeType = myMime.getMimeTypeFromExtension(fileExt(meno).substring(1));
+
+                    Field[] drawables = android.R.drawable.class.getFields();
+                    for (Field f : drawables) {
+                        int splitF = f.getName().lastIndexOf('/');
+                        try {
+                            if (mimeType.equals(f.getName().substring(splitF).replaceAll("[-+]", ""))) {
+                                int resid = getResources().getIdentifier(f.getName(), "drawable", getPackageName());
+                                ikona.setImageResource(resid);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else
+                    ikona.setImageDrawable(draw2);
+
+Vratit do res>menu + odpoznamkovat v genericfileexploreractivity

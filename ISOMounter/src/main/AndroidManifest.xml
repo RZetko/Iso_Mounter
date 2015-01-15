@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="info.ipsec.zdenko.isomounter"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light" >
+        <activity
+            android:name="info.ipsec.zdenko.isomounter.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.iso" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="application/x-iso9660-image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="info.ipsec.zdenko.isomounter.MountDestinationActivity"
+            android:label="@string/title_activity_mount_destination"
+            android:parentActivityName="info.ipsec.zdenko.isomounter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="info.ipsec.zdenko.isomounter.MainActivity" />
+        </activity>
+        <activity
+            android:name="info.ipsec.zdenko.isomounter.IsoExploreActivity"
+            android:label="ISO Explore"
+            android:parentActivityName="info.ipsec.zdenko.isomounter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="info.ipsec.zdenko.isomounter.MainActivity" />
+        </activity>
+        <activity
+            android:name="info.ipsec.zdenko.isomounter.ExportDestinationActivity"
+            android:label="File Export"
+            android:parentActivityName="info.ipsec.zdenko.isomounter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="info.ipsec.zdenko.isomounter.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

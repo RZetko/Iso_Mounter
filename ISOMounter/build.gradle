@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.0.1'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:19.0.1'
+    compile 'com.android.support:support-v4:+'
+    compile files('libs/RootTools2.6.jar')
+}
+
+android {
+    signingConfigs {
+        release {
+            storeFile file("release.keystore")
+            storePassword "******"
+            keyAlias "******"
+            keyPassword "******"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
